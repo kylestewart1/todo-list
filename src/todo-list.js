@@ -5,7 +5,7 @@ export class TodoList {
         };
     }
 
-    add(project) {
+    newProject(project) {
         let name = project.name;
         let num = 1;
         while (name in this.projects) {
@@ -15,7 +15,16 @@ export class TodoList {
         this.projects[name] = project;
     }
 
-    remove(projectName) {
+    removeProject(projectName) {
         delete this.projects[projectName];
     }
+
+    addItem(item, projectName) {
+        this.projects[projectName].add(item);
+    }
+
+    removeItem(itemID, projectName) {
+        this.projects[projectName].remove(itemID);
+    }
+    
 }
