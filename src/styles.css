@@ -8,6 +8,7 @@
     margin-left: 10%;
     margin-top: 2%;
     padding-left: 5%;
+    padding-right: 5%;
     height: 100%;
     width: 90%;
 }
@@ -18,7 +19,8 @@ nav {
     top: 0;
     height: 100%;
     width: 10%;
-    padding-left: 2%;
+    padding-left: 1%;
+    padding-right: 1%;
     padding-top: 2%;
     border-right: 1px solid grey;
     display: flex;
@@ -30,3 +32,21 @@ ul {
     list-style: none;
 }
 
+.project-nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.item {
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+}
+
+.title {
+    grid-column: 1 / -1;
+}
+
+.project {
+    display: grid;
+    grid-template-columns: 6fr 1fr;
+}

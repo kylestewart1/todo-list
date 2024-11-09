@@ -1,7 +1,9 @@
+import { Project } from "./project";
+
 export class TodoList {
     constructor() {
         this.projects = {
-            'default': {}
+            "My Tasks": new Project("My Tasks"),
         };
     }
 
@@ -26,5 +28,5 @@ export class TodoList {
     removeItem(itemID, projectName) {
         this.projects[projectName].remove(itemID);
     }
-    
+
 }
