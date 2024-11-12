@@ -19,6 +19,7 @@ export function newProjectForm(todoList) {
     const selectTasks = document.createElement("select");
     selectTasks.id = "select-tasks";
     selectTasks.name = "tasks";
+    selectTasks.appendChild(document.createElement("option"));
     for (const taskID in todoList.projects["My Tasks"].tasks) {
         const option = document.createElement("option");
         const taskName = todoList.projects["My Tasks"].tasks[taskID].title;

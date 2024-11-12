@@ -33,8 +33,10 @@ export class FormController {
 
         data.getAll("tasks").forEach(taskID => {
             const task = TodoList.projects["My Tasks"].tasks[taskID];
-            project.add(task);
-            TodoList.projects["My Tasks"].remove(taskID);
+            if (task) {
+                project.add(task);
+                TodoList.projects["My Tasks"].remove(taskID);
+            }
         })
 
         if (!(title in TodoList.projects)) {
