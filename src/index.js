@@ -1,24 +1,25 @@
 // index.js
-import "./styles.css"
-import { TodoList } from "./todo-list";
-import { Project } from "./project";
-import { Item } from "./item";
-import { ProjectView } from "./project-view";
-import { NavView } from "./nav-view";
+import "./styles.css";
+import TodoList from "./models/todo-list";
+import { Project } from "./models/project";
+import { Task } from "./models/task";
+import { ProjectView } from "./views/project-view";
+import NavView from "./views/nav-view";
+import ScreenController from "./controllers/screen-controller";
 
 const body = document.querySelector("body");
 const navBar = document.querySelector("nav");
-const contentDiv = document.querySelector("#content");
+const content = document.querySelector("#content");
 
-const testItem = new Item("do stuff", "do stuff but like the long version", "eventually", "meh");
+const testTask = new Task("do stuff", "do stuff but like the long version", "eventually", "meh");
 
-const td = new TodoList();
-td.addItem(testItem, "My Tasks");
+TodoList.addTask(testTask, "My Tasks");
+TodoList.addTask(new Task("whatever", "meh", "someday", "..."), "My Tasks");
 
-const nv = new NavView(td);
-nv.display();
+NavView.display();
 
-let pv = new ProjectView(td.projects["My Tasks"]);
+let pv = new ProjectView(TodoList.projects["My Tasks"]);
 pv.display();
 console.log(pv); 
 
+ScreenController.handleNewProjectButton(TodoList);

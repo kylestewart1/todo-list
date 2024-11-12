@@ -1,6 +1,6 @@
 import { Project } from "./project";
 
-export class TodoList {
+class TodoList {
     constructor() {
         this.projects = {
             "My Tasks": new Project("My Tasks"),
@@ -14,6 +14,7 @@ export class TodoList {
             name = `${name}${num}`;
             num++;
         }
+        project.name = name;
         this.projects[name] = project;
     }
 
@@ -21,12 +22,16 @@ export class TodoList {
         delete this.projects[projectName];
     }
 
-    addItem(item, projectName) {
-        this.projects[projectName].add(item);
+    addTask(task, projectName) {
+        this.projects[projectName].add(task);
     }
 
-    removeItem(itemID, projectName) {
-        this.projects[projectName].remove(itemID);
+    removeTask(taskID, projectName) {
+        this.projects[projectName].remove(taskID);
     }
+
+
 
 }
+
+export default new TodoList();

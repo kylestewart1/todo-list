@@ -1,4 +1,4 @@
-export class Item {
+export class Task {
     static generateID() {
         return `${Math.random()}`;
     }
@@ -10,7 +10,7 @@ export class Item {
         this.priority = priority;
         this.complete = false;
         this.selected = false;
-        this.ID = Item.generateID();
+        this.ID = Task.generateID();
     }
 
     checkComplete() {
