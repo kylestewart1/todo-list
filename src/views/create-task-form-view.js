@@ -28,7 +28,7 @@ export function createTaskForm() {
     dateLabel.innerText = "Due:";
     dateLabel.for = "task-due-date";
     const dateInput = document.createElement("input");
-    dateInput.type = "datetime-local";
+    dateInput.type = "date";
     dateInput.id = "task-due-date";
     dateInput.name = "due-date";
     dateInput.required = true;

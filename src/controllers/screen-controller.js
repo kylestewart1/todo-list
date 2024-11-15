@@ -22,9 +22,11 @@ class ScreenController {
         addTaskButtons.forEach(button => {
             button.addEventListener("click", () => {
                 const form = createTaskForm();
+                form.dataset.project = button.dataset.project;
                 dialog.innerHTML = "";
                 dialog.appendChild(form);
                 dialog.showModal();
+                const formControl = new FormController(form.id);
             })
         })
     }

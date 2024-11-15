@@ -5,7 +5,6 @@ import { Project } from "./models/project";
 import { Task } from "./models/task";
 import { ProjectView } from "./views/project-view";
 import NavView from "./views/nav-view";
-import ScreenController from "./controllers/screen-controller";
 
 const body = document.querySelector("body");
 const navBar = document.querySelector("nav");
@@ -22,6 +21,5 @@ let pv = new ProjectView(TodoList.projects["My Tasks"]);
 pv.display();
 console.log(pv); 
 
-ScreenController.handleNewProjectButton(TodoList);
-ScreenController.handleAddTaskButtons();
+
 

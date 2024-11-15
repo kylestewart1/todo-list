@@ -51,6 +51,7 @@ class NavView {
         addTaskButton.classList.add("task-btn");
         addTaskButton.classList.add("add-task");
         addTaskButton.id = `add-task-to-${project.name}`;
+        addTaskButton.dataset.project = project.name;
         const addTaskImg = document.createElement("img");
         addTaskImg.classList.add("task-icon");
         addTaskImg.src = addTaskIcon;
@@ -107,6 +108,7 @@ class NavView {
             navBar.appendChild(NavView.buildProjectNav(this.todoList.projects[project]));
         }
         ScreenController.handleNewProjectButton();
+        ScreenController.handleAddTaskButtons();
     }
 }
 

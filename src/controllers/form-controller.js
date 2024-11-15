@@ -1,4 +1,5 @@
 import { Project } from "../models/project";
+import { Task } from "../models/task";
 import TodoList from "../models/todo-list";
 import NavView from "../views/nav-view";
 
@@ -9,18 +10,28 @@ export class FormController {
 
         this.submitButton.addEventListener("click", (event) => {
             event.preventDefault();
-            const title = this.form.querySelector('input[type="text"]');
-            title.classList.remove("invalid");
-            if (!title.value) {
-                title.classList.add("invalid");
-            } else {
-                this.handleNewProjectSubmit();
+            const inputs = this.form.querySelectorAll("input");
+            let validForm = true;
+            inputs.forEach(input => {
+                input.classList.remove("invalid");
+                if (!input.value) {
+                    input.classList.add("invalid");
+                    validForm = false;
+                }
+            })
+            if (validForm) {
+                if (formID === "new-project-form") {
+                    this.handleNewProjectSubmit();
+                } else if (formID == "create-task-form") {
+                    this.handleCreateTaskSubmit();
+                }
             }
+            
         })
     }
 
     handleNewProjectSubmit() {
-        const dialog = document.querySelector("dialog");
+        const dialog = document.querySelector("#new-project-modal");
         const data = new FormData(this.form);
         const title = data.get("title");
 
@@ -35,7 +46,7 @@ export class FormController {
             const task = TodoList.projects["My Tasks"].tasks[taskID];
             if (task) {
                 project.add(task);
-                TodoList.projects["My Tasks"].remove(taskID);
+                TodoList.removeTask(taskID, "My Tasks");
             }
         })
 
@@ -46,5 +57,22 @@ export class FormController {
         NavView.display();
     }
 
+    handleCreateTaskSubmit() {
+        const dialog = document.querySelector("#create-task-modal");
+
+
+        const data = new FormData(this.form);
+
+        const title = data.get("title");
+        const description = data.get("description");
+        const dueDate = data.get("due-date");
+        const priority = data.get("priority");
+
+        const task = new Task(title, description, dueDate, priority);
+        TodoList.addTask(task, this.form.dataset.project);
+
+        dialog.close();
+        NavView.display();
+    }
 
 }
