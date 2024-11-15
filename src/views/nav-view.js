@@ -1,6 +1,7 @@
 import addIcon from "../assets/icons/add.png";
 import projectIcon from "../assets/icons/tree.png";
 import taskIcon from "../assets/icons/leaf.png";
+import addTaskIcon from "../assets/icons/add-task-icon.png";
 import TodoList from "../models/todo-list";
 import ScreenController from "../controllers/screen-controller";
 
@@ -45,6 +46,20 @@ class NavView {
             const taskNav = NavView.buildTaskNav(project.tasks[taskID]);
             container.appendChild(taskNav);
         }
+
+        const addTaskButton = document.createElement("button");
+        addTaskButton.classList.add("task-btn");
+        addTaskButton.classList.add("add-task");
+        addTaskButton.id = `add-task-to-${project.name}`;
+        const addTaskImg = document.createElement("img");
+        addTaskImg.classList.add("task-icon");
+        addTaskImg.src = addTaskIcon;
+        addTaskButton.appendChild(addTaskImg);
+        const addTaskText = document.createElement("p");
+        addTaskText.innerText = "Add Task";
+        addTaskButton.appendChild(addTaskText);
+
+        container.appendChild(addTaskButton);
 
         return container;
     }

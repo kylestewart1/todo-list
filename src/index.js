@@ -23,3 +23,5 @@ pv.display();
 console.log(pv); 
 
 ScreenController.handleNewProjectButton(TodoList);
+ScreenController.handleAddTaskButtons();
+

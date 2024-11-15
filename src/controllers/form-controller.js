@@ -9,7 +9,7 @@ export class FormController {
 
         this.submitButton.addEventListener("click", (event) => {
             event.preventDefault();
-            const title = this.form.querySelector('input[type="text"');
+            const title = this.form.querySelector('input[type="text"]');
             title.classList.remove("invalid");
             if (!title.value) {
                 title.classList.add("invalid");
@@ -45,4 +45,6 @@ export class FormController {
         dialog.close();
         NavView.display();
     }
+
+
 }
