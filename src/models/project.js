@@ -15,4 +15,13 @@ export class Project {
     clear() {
         this.tasks = {};
     }
+
+    getTask(lookupTaskID) {
+        for (const taskID in this.tasks) {
+            if (taskID === lookupTaskID) {
+                return this.tasks[taskID];
+            }
+        }
+        return null;
+    }
 }

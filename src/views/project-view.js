@@ -4,17 +4,21 @@ export class ProjectView {
     }
 
     static buildTaskDisplay(task) {
-        const taskDisplay = document.createElement("li");
+        const taskDisplay = document.createElement("div");
         taskDisplay.classList.add("task");
+
+        const selectTask = document.createElement("button");
+        selectTask.classList.add("select-task");
+        taskDisplay.appendChild(selectTask);
 
         const title = document.createElement("p");
         title.textContent = task.title;
-        title.classList.add("title");
+        title.classList.add("task-title");
         taskDisplay.appendChild(title);
 
         const dueDate = document.createElement("div");
-        dueDate.textContent = task.dueDate;
-        dueDate.classList.add("dueDate");
+        dueDate.textContent = task.dueDate.toDateString();
+        dueDate.classList.add("due-date");
         taskDisplay.appendChild(dueDate);
 
         return taskDisplay;
@@ -22,7 +26,8 @@ export class ProjectView {
 
     display() {
         const content = document.querySelector("#content");
-        content.classList.add("project");
+        content.innerHTML="";
+        content.classList.add("project-view");
 
         const projectTitle = document.createElement("h3");
         projectTitle.textContent = this.project.name;
@@ -30,18 +35,23 @@ export class ProjectView {
 
         
 
-        const projectBody = document.createElement("ul");
+        const projectBody = document.createElement("div");
+        projectBody.classList.add("project");
 
         for (const task in this.project.tasks) {
             const taskDisplay = ProjectView.buildTaskDisplay(this.project.tasks[task]);
             projectBody.appendChild(taskDisplay);
         }
 
-        const addtaskButton = document.createElement("button");
-        addtaskButton.id = "add-task-btn";
-        addtaskButton.textContent = "+";
+        
         content.appendChild(projectBody);
-        content.appendChild(addtaskButton);
+
+        if (this.project.name !== "Today" && this.project.name !== "Upcoming") {
+            const addtaskButton = document.createElement("button");
+            addtaskButton.id = "add-task-btn";
+            addtaskButton.textContent = "+";
+            content.appendChild(addtaskButton);
+        }
     }
 }
 

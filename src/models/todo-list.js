@@ -30,7 +30,28 @@ class TodoList {
         this.projects[projectName].remove(taskID);
     }
 
+    getTask(taskID) {
+        let task = null;
+        for (const projectName in this.projects) {
+            task = this.projects[projectName].getTask(taskID);
+            if (task) {
+                break;
+            }
+        }
+        return task;
+    }
 
+    getAllTasks() {
+        const tasks = [];
+        for (const projectName in this.projects) {
+            const project = this.projects[projectName];
+            for (const taskID in project.tasks) {
+                const task = project.tasks[taskID];
+                tasks.push(task);
+            }
+        }
+        return tasks;
+    }
 
 }
 

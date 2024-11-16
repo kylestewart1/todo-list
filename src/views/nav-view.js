@@ -3,7 +3,7 @@ import projectIcon from "../assets/icons/tree.png";
 import taskIcon from "../assets/icons/leaf.png";
 import addTaskIcon from "../assets/icons/add-task-icon.png";
 import TodoList from "../models/todo-list";
-import ScreenController from "../controllers/screen-controller";
+import NavController from "../controllers/nav-controller";
 
 class NavView {
     constructor(todoList) {
@@ -12,7 +12,9 @@ class NavView {
 
     static buildTaskNav(task) {
         const container = document.createElement("button");
+        container.classList.add("task-listing");
         container.classList.add("task-btn");
+        container.dataset.task = task.ID;
 
         const icon = document.createElement("img");
         icon.src = taskIcon;
@@ -32,7 +34,9 @@ class NavView {
         container.classList.add("project-nav");
 
         const projectHeader = document.createElement("button");
+        projectHeader.classList.add("project-header");
         projectHeader.classList.add("project-btn");
+        projectHeader.dataset.project = project.name;
         const icon = document.createElement("img");
         icon.src = projectIcon;
         icon.classList.add("project-icon");
@@ -48,7 +52,7 @@ class NavView {
         }
 
         const addTaskButton = document.createElement("button");
-        addTaskButton.classList.add("task-btn");
+        addTaskButton.classList.add("task-listing");
         addTaskButton.classList.add("add-task");
         addTaskButton.id = `add-task-to-${project.name}`;
         addTaskButton.dataset.project = project.name;
@@ -72,7 +76,7 @@ class NavView {
 
         const newProjectButton = document.createElement("button");
         newProjectButton.id = "new-project";
-        newProjectButton.classList.add("project-btn");
+        newProjectButton.classList.add("project-header");
         const newImg = document.createElement("img");
         newImg.class="project-icon";
         newImg.src = "../assets/icons/add.png"
@@ -80,12 +84,12 @@ class NavView {
 
         const todayButton = document.createElement("button");
         todayButton.id = "today";
-        todayButton.classList.add("project-btn");
+        todayButton.classList.add("project-header");
         todayButton.innerHTML += `<h4>Today</h4>`;
 
         const upcomingButton = document.createElement("button");
         upcomingButton.id = "upcoming";
-        upcomingButton.classList.add("project-btn");
+        upcomingButton.classList.add("project-header");
         upcomingButton.innerHTML += `<h4>Upcoming</h4>`;
 
         timelineDiv.appendChild(newProjectButton);
@@ -97,18 +101,24 @@ class NavView {
 
     display() {
         const navBar = document.querySelector("nav");
-        navBar.innerHTML = `<div id="timeline" class="project-nav">
-        <button id="new-project" class="project-btn"><img class="project-icon" src=${addIcon}><h4>New Project</h4></button>
-        <button id="today" class="project-btn"><img class="project-icon" src=${projectIcon}><h4>Today</h4></button>
-        <button id="upcoming" class="project-btn"><img class="project-icon" src=${projectIcon}><h4>Upcoming</h4></button>
-    </div>`;
+        
+        navBar.innerHTML = `
+            <div id="timeline" class="project-nav">
+                <button id="new-project" class="project-header"><img class="project-icon" src=${addIcon}><h4>New Project</h4></button>
+                <button id="today" class="project-header"><img class="project-icon" src=${projectIcon}><h4>Today</h4></button>
+                <button id="upcoming" class="project-header"><img class="project-icon" src=${projectIcon}><h4>Upcoming</h4></button>
+            </div>`;
 
 
         for (const project in this.todoList.projects) {
             navBar.appendChild(NavView.buildProjectNav(this.todoList.projects[project]));
         }
-        ScreenController.handleNewProjectButton();
-        ScreenController.handleAddTaskButtons();
+        NavController.handleNewProjectButton();
+        NavController.handleAddTaskButtons();
+        NavController.handleProjectDisplay();
+        NavController.handleTaskDisplay();
+        NavController.handleTodayButton();
+        NavController.handleUpcomingButton();
     }
 }
 

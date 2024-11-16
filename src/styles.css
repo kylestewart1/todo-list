@@ -10,7 +10,7 @@
     padding-left: 5%;
     padding-right: 5%;
     height: 100%;
-    width: 90%;
+    width: 80%;
 }
 
 nav {
@@ -34,7 +34,7 @@ nav {
     gap: 10px;
 }
 
-.project-btn, .task-btn {
+.project-header, .task-listing {
     width: 150px;
     background: none;
     border: none;
@@ -67,16 +67,49 @@ button:hover {
     cursor: pointer;
 }
 
+.project {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .task {
     display: grid;
-    grid-template-columns: 1fr 6fr;
+    grid-template-columns: 1fr 12fr;
+    grid-template-rows: 1fr 1fr;
+    border-bottom: 1px solid gray;
+    padding: 5px;
+    min-height: 100px;
+}
+
+.select-task {
+    grid-row: 1 / -1;
+    grid-column: 1;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: none;
+    justify-self: center;
+}
+
+.task-selected {
+    background-color: blue;
+}
+
+.task-title, .due-date {
+    justify-self: start;
+}
+
+.due-date {
+    font-size: 0.8em;
+    color: green;
 }
 
 .title {
     grid-column: 1 / -1;
 }
 
-.project {
+.project-view {
     display: flex;
     flex-direction: column;
     gap: 10px;
