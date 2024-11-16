@@ -18,7 +18,7 @@ export function createUpcomingProject() {
     const upcomingProject = new Project("Upcoming");
     const allTasks = TodoList.getAllTasks();
     allTasks.forEach(task => {
-        if (withinOneWeekOfToday(task)) {
+        if (withinOneWeekOfToday(task.dueDate)) {
             upcomingProject.add(task);
         }
     })

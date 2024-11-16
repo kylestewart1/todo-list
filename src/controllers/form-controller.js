@@ -66,7 +66,6 @@ export class FormController {
         const title = data.get("title");
         const description = data.get("description");
         const dueDate = data.get("due-date");
-        console.log(dueDate);
         const priority = data.get("priority");
 
         const task = new Task(title, description, dueDate, priority);

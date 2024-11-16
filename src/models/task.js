@@ -7,7 +7,7 @@ export class Task {
     constructor(title, description, dueDate, priority) {
         this.title = title;
         this.description = description;
-        this.dueDate = new Date(dueDate);
+        this.dueDate = new Date(dueDate + " 00:00:00");
         this.priority = priority;
         this.complete = false;
         this.selected = false;

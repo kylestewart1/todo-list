@@ -5,8 +5,8 @@ export function sameDay(date1, date2) {
 }
 
 export function dayOfDate(date) {
-    currentTime = date.getMilliseconds() + 1000*(date.getSeconds() + 60 * (date.getMinutes() + 60 * date.get(hours)));
-    currentDate = date.parse() - currentTime();
+    const currentTime = date.getMilliseconds() + 1000*(date.getSeconds() + 60 * (date.getMinutes() + 60 * date.get(hours)));
+    const currentDate = date.getTime() - currentTime;
     return new Date(currentDate);
 }
 
@@ -15,7 +15,7 @@ export function differenceInDays(date1, date2) {
 }
 
 export function withinOneWeekOfToday(date) {
-    now = new Date();
+    const now = new Date();
     const diff = differenceInDays(date, now);
     return (diff >=0 && diff <= 7) 
 }

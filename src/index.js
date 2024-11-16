@@ -10,10 +10,11 @@ const body = document.querySelector("body");
 const navBar = document.querySelector("nav");
 const content = document.querySelector("#content");
 
-const testTask = new Task("do stuff", "do stuff but like the long version", "2025-01-01", "meh");
+const testTask = new Task("do stuff", "do stuff but like the long version", "2024-11-21", "meh");
 
 TodoList.addTask(testTask, "My Tasks");
 TodoList.addTask(new Task("whatever", "meh", "2026-10-30", "..."), "My Tasks");
+TodoList.addTask(new Task("not die", "obvious", "2024-11-16", "high"), "My Tasks");
 
 NavView.display();
 

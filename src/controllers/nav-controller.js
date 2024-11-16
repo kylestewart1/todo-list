@@ -71,7 +71,7 @@ class NavController {
     }
 
     handleUpcomingButton() {
-        const upcomingButton = document.getElementById("Upcoming");
+        const upcomingButton = document.getElementById("upcoming");
         upcomingButton.addEventListener("click", () => {
             const upcoming = createUpcomingProject();
             const view = new ProjectView(upcoming);
