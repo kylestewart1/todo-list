@@ -1,7 +1,9 @@
 
 export class Task {
+    static taskCount = 0;
     static generateID() {
-        return `${Math.random()}`;
+        Task.taskCount++
+        return Task.taskCount;
     }
 
     constructor(title, description, dueDate, priority) {

@@ -194,6 +194,10 @@ form {
     grid-column: 1 / -1;
 }
 
+.selected {
+    background-color: yellow;
+}
+
 form > button {
     background-color: forestgreen;
     color: white;

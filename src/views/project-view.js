@@ -63,8 +63,10 @@ export class ProjectView {
             addtaskButton.appendChild(addTaskIcon);
             addtaskButton.appendChild(addTaskLabel);
             content.appendChild(addtaskButton);
+
             ContentController.handleAddTaskButton();
         }
+        ContentController.handleSelectTaskButtons();
     }
 }
 

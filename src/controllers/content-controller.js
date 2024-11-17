@@ -14,6 +14,15 @@ class ContentController {
             const formControl = new FormController(form.id);
         })
     }
+
+    handleSelectTaskButtons() {
+        const selectButtons = document.querySelectorAll(".select-task");
+        selectButtons.forEach(btn => {
+            btn.addEventListener("click", () => {
+                btn.classList.toggle("selected");
+            })
+        })
+    }
 }
 
 export default new ContentController();
