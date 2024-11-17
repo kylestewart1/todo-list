@@ -36,11 +36,11 @@ export function createTaskForm() {
     const priorityFieldset = document.createElement("fieldset");
     priorityFieldset.innerHTML = `
         <legend>Priority</legend>
-        <input type="radio" id="low" value="low" name="priority" checked>
+        <input type="radio" id="low" value="Low" name="priority" checked>
         <label for="low">Low</label>
-        <input type="radio" id="medium" value="medium" name="priority">
+        <input type="radio" id="medium" value="Medium" name="priority">
         <label for="medium">Medium</label>
-        <input type="radio" id="high" value="high" name="priority">
+        <input type="radio" id="high" value="High" name="priority">
         <label for="high">High</label>
     `;
 

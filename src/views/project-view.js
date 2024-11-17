@@ -1,4 +1,8 @@
 import icon from "../assets/icons/add-task-icon.png";
+import highPriority from "../assets/icons/high-priority.png";
+import mediumPriority from "../assets/icons/medium-priority.png";
+import lowPriority from "../assets/icons/low-priority.png";
+import deleteImg from "../assets/icons/delete.png";
 import ContentController from "../controllers/content-controller";
 
 export class ProjectView {
@@ -10,11 +14,37 @@ export class ProjectView {
         const taskDisplay = document.createElement("div");
         taskDisplay.classList.add("task");
 
-        const selectTask = document.createElement("button");
-        selectTask.classList.add("select-task");
-        taskDisplay.appendChild(selectTask);
+        const deleteButton = document.createElement("button");
+        deleteButton.dataset.task = task.ID;
+        deleteButton.classList.add("delete-button");
+        const deleteIcon = document.createElement("img");
+        deleteIcon.src = deleteImg;
+        const deleteText = document.createElement("h4");
+        deleteText.innerText = "Delete";
+        deleteButton.appendChild(deleteIcon);
+        deleteButton.appendChild(deleteText);
+        taskDisplay.appendChild(deleteButton);
 
-        const title = document.createElement("p");
+        const priority = task.priority;
+        const priorityContainer = document.createElement("div");
+        priorityContainer.classList.add("priority");
+        const icon = document.createElement("img");
+        if (priority === "High") {
+            icon.src = highPriority;
+        } else if (priority === "Medium") {
+            icon.src= mediumPriority;
+        } else {
+            icon.src = lowPriority;
+        }
+
+        const priorityLabel = document.createElement("p");
+        priorityLabel.innerText = `${priority} Priority`;
+        priorityContainer.appendChild(icon);
+        priorityContainer.appendChild(priorityLabel);
+        taskDisplay.appendChild(priorityContainer);
+
+        const title = document.createElement("button");
+        title.dataset.task = task.ID;
         title.textContent = task.title;
         title.classList.add("task-title");
         taskDisplay.appendChild(title);
@@ -23,6 +53,7 @@ export class ProjectView {
         dueDate.textContent = task.dueDate.toDateString();
         dueDate.classList.add("due-date");
         taskDisplay.appendChild(dueDate);
+
 
         return taskDisplay;
     }

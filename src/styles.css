@@ -45,11 +45,11 @@ nav {
     column-gap: 10px;
 }
 
-button > img {
+.project-header > img, .task-listing > img {
     justify-self: end;
 }
 
-button > p, button > h4 {
+.project-header> h4, .task-listing > p {
     justify-self: start;
     text-align: start;
 }
@@ -57,6 +57,7 @@ button > p, button > h4 {
 .task-icon {
     height: 1.2em;
 }
+
 
 
 .project-icon {
@@ -70,34 +71,71 @@ button:hover {
 .project {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
 }
 
 .task {
-    display: grid;
-    grid-template-columns: 1fr 12fr;
-    grid-template-rows: 1fr 1fr;
     border-bottom: 1px solid gray;
-    padding: 5px;
-    min-height: 100px;
+    min-height: 150px;
+    display: grid;
+    grid-template-columns: 1fr 4fr 3fr;
+    grid-template-rows: 1fr 1fr;
+    column-gap: 30px;
 }
 
-.select-task {
+
+.delete-button {
     grid-row: 1 / -1;
-    grid-column: 1;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
+    grid-column: 1 / 2;
     background: none;
-    justify-self: center;
+    border: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-self: center;
+    align-items: center;
 }
 
-.task-selected {
-    background-color: blue;
+.delete-button > img {
+    width: 30px;
+    justify-self: end;
 }
+
+.delete-button > p {
+    justify-self: start;
+    font-size: 1.5rem;
+}
+.priority {
+    grid-row: 1 / -1;
+    grid-column: -2 / -1;
+    align-self: center;
+    justify-self: start;
+    width: 200px;
+    
+    background: none;
+    border: none;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    align-items: center;
+    justify-items: start;
+}
+
+.priority > img {
+    width: 30px;
+    height: 30px;
+}
+
+.task-title {
+    background: none;
+    border: none;
+    grid-row: 1 / 2;
+    font-size: 2rem;
+}
+
 
 .task-title, .due-date {
     justify-self: start;
+    align-self: center;
+    grid-column: 2 / 3;
 }
 
 .due-date {

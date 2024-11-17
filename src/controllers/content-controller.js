@@ -1,5 +1,7 @@
 import { createTaskForm } from "../views/create-task-form-view";
 import { FormController } from "./form-controller";
+import TodoList from "../models/todo-list";
+import { TaskView } from "../views/task-view";
 
 class ContentController {
     handleAddTaskButton() {
@@ -16,10 +18,12 @@ class ContentController {
     }
 
     handleSelectTaskButtons() {
-        const selectButtons = document.querySelectorAll(".select-task");
+        const selectButtons = document.querySelectorAll(".task-title");
         selectButtons.forEach(btn => {
             btn.addEventListener("click", () => {
-                btn.classList.toggle("selected");
+                const task = TodoList.getTask(btn.dataset.task);
+                const taskView = new TaskView(task);
+                taskView.display();
             })
         })
     }
