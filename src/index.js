@@ -14,7 +14,7 @@ const testTask = new Task("do stuff", "do stuff but like the long version", "202
 
 TodoList.addTask(testTask, "My Tasks");
 TodoList.addTask(new Task("whatever", "meh", "2026-10-30", "Low"), "My Tasks");
-TodoList.addTask(new Task("not die", "obvious", "2024-11-16", "High"), "My Tasks");
+TodoList.addTask(new Task("not die", "obvious", "2024-11-17", "High"), "My Tasks");
 
 NavView.display();
 

@@ -23,6 +23,7 @@ class TodoList {
     }
 
     addTask(task, projectName) {
+        task.project = projectName;
         this.projects[projectName].add(task);
     }
 
@@ -39,6 +40,18 @@ class TodoList {
             }
         }
         return task;
+    }
+
+    getTaskProject(taskID) {
+        let projectName = null;
+        for (const project in this.projects) {
+            const task = this.projects[project].getTask(taskID);
+            if (task) {
+                projectName = project;
+                break;
+            }
+        }
+        return projectName;
     }
 
     getAllTasks() {

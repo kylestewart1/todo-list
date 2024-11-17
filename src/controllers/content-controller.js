@@ -2,6 +2,8 @@ import { createTaskForm } from "../views/create-task-form-view";
 import { FormController } from "./form-controller";
 import TodoList from "../models/todo-list";
 import { TaskView } from "../views/task-view";
+import { ProjectView } from "../views/project-view";
+import navView from "../views/nav-view";
 
 class ContentController {
     handleAddTaskButton() {
@@ -24,6 +26,21 @@ class ContentController {
                 const task = TodoList.getTask(btn.dataset.task);
                 const taskView = new TaskView(task);
                 taskView.display();
+            })
+        })
+    }
+
+    handleDeleteTaskButtons() {
+        const deleteButtons = document.querySelectorAll(".delete-button");
+        deleteButtons.forEach(btn => {
+            btn.addEventListener("click", () => {
+                const taskID = btn.dataset.task;
+                const projectName = btn.dataset.project;
+                console.log(`Project name: ${projectName}`);
+                TodoList.removeTask(taskID, projectName);
+                const projectView = new ProjectView(TodoList.projects[projectName]);
+                projectView.display();
+                navView.display();
             })
         })
     }

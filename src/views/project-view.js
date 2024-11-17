@@ -4,18 +4,20 @@ import mediumPriority from "../assets/icons/medium-priority.png";
 import lowPriority from "../assets/icons/low-priority.png";
 import deleteImg from "../assets/icons/delete.png";
 import ContentController from "../controllers/content-controller";
+import TodoList from "../models/todo-list";
 
 export class ProjectView {
     constructor(project) {
         this.project = project;
     }
 
-    static buildTaskDisplay(task) {
+    buildTaskDisplay(task) {
         const taskDisplay = document.createElement("div");
         taskDisplay.classList.add("task");
 
         const deleteButton = document.createElement("button");
         deleteButton.dataset.task = task.ID;
+        deleteButton.dataset.project = task.project;
         deleteButton.classList.add("delete-button");
         const deleteIcon = document.createElement("img");
         deleteIcon.src = deleteImg;
@@ -73,7 +75,7 @@ export class ProjectView {
         projectBody.classList.add("project");
 
         for (const task in this.project.tasks) {
-            const taskDisplay = ProjectView.buildTaskDisplay(this.project.tasks[task]);
+            const taskDisplay = this.buildTaskDisplay(this.project.tasks[task]);
             projectBody.appendChild(taskDisplay);
         }
 
@@ -98,6 +100,7 @@ export class ProjectView {
             ContentController.handleAddTaskButton();
         }
         ContentController.handleSelectTaskButtons();
+        ContentController.handleDeleteTaskButtons();
     }
 }
 

@@ -12,7 +12,7 @@ export class Task {
         this.dueDate = new Date(dueDate + " 00:00:00");
         this.priority = priority;
         this.complete = false;
-        this.selected = false;
+        this.project = "";
         this.ID = Task.generateID();
     }
 
