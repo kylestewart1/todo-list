@@ -2,6 +2,7 @@ import { Project } from "../models/project";
 import { Task } from "../models/task";
 import TodoList from "../models/todo-list";
 import NavView from "../views/nav-view";
+import { ProjectView } from "../views/project-view";
 
 export class FormController {
     constructor(formID) {
@@ -73,6 +74,8 @@ export class FormController {
 
         dialog.close();
         NavView.display();
+        const projectView = new ProjectView(TodoList.projects[this.form.dataset.project]);
+        projectView.display();
     }
 
 }

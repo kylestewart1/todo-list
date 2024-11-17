@@ -1,3 +1,6 @@
+import icon from "../assets/icons/add-task-icon.png";
+import ContentController from "../controllers/content-controller";
+
 export class ProjectView {
     constructor(project) {
         this.project = project;
@@ -49,8 +52,18 @@ export class ProjectView {
         if (this.project.name !== "Today" && this.project.name !== "Upcoming") {
             const addtaskButton = document.createElement("button");
             addtaskButton.id = "add-task-btn";
-            addtaskButton.textContent = "+";
+            addtaskButton.dataset.project = this.project.name;
+
+            const addTaskIcon = document.createElement("img");
+            addTaskIcon.src = icon;
+
+            const addTaskLabel = document.createElement("h4");
+            addTaskLabel.innerText = "Add Task";
+
+            addtaskButton.appendChild(addTaskIcon);
+            addtaskButton.appendChild(addTaskLabel);
             content.appendChild(addtaskButton);
+            ContentController.handleAddTaskButton();
         }
     }
 }
