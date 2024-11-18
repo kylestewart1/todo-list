@@ -264,3 +264,42 @@ legend {
     grid-column: 1 / -1;
 }
 
+.task-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr 1fr 5fr;
+    row-gap: 10px;
+}
+
+.edit-task-button {
+    background: none;
+    border: none;
+    align-self: center;
+    width: 80px;
+    grid-row: 1;
+    grid-column: 1;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    align-items: center;
+}
+
+.edit-task-button > img {
+    width: 30px;
+}
+
+.task-view-title {
+    font-size: 2.5rem;
+    align-self: start;
+}
+
+.task-view-due-date {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: center;
+}
+
+.task-description {
+    grid-column: -2 / -1;
+    grid-row: 2 / -1;
+    font-size: 1.5rem;
+}

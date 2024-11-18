@@ -44,6 +44,19 @@ class ContentController {
             })
         })
     }
+
+    handleEditTaskButton() {
+        const dialog = document.querySelector("#create-task-modal");
+        const editTaskButton = document.querySelector(".edit-task-button");
+        editTaskButton.addEventListener("click", () => {
+            const taskID = editTaskButton.dataset.task;
+            const form = createTaskForm(TodoList.getTask(taskID));
+            dialog.innerHTML = "";
+            dialog.appendChild(form);
+            dialog.showModal();
+            const control = new FormController(form.id);
+        })
+    }
 }
 
 export default new ContentController();

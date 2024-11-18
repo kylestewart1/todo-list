@@ -69,9 +69,21 @@ export class FormController {
         const dueDate = data.get("due-date");
         const priority = data.get("priority");
 
-        const task = new Task(title, description, dueDate, priority);
+        const taskID = this.form.dataset.taskID;
+        let task = TodoList.getTask(taskID);
+        if (task) {
+            TodoList.removeTask(taskID, task.project);
+            task.title = title;
+            task.description = description;
+            task.setDueDateFromString(dueDate);
+            task.priority = priority;
+        } else {
+            task = new Task(title, description, dueDate, priority);
+        }
+
         TodoList.addTask(task, this.form.dataset.project);
 
+        console.log(TodoList);
         dialog.close();
         NavView.display();
         const projectView = new ProjectView(TodoList.projects[this.form.dataset.project]);

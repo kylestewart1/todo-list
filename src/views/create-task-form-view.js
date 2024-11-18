@@ -1,9 +1,13 @@
-export function createTaskForm() {
+export function createTaskForm(task=null) {
     const form = document.createElement("form");
     form.id = "create-task-form";
 
     const formHeading = document.createElement("h3");
-    formHeading.innerText = "New Task";
+    if (task) {
+        formHeading.innerText = "Edit Task";
+    } else {
+        formHeading.innerText = "New Task";
+    }
 
     const titleLabel = document.createElement("label");
     titleLabel.innerText = "Title:";
@@ -47,6 +51,17 @@ export function createTaskForm() {
     const submitButton = document.createElement("button");
     submitButton.type = "submit";
     submitButton.innerText = "Create Task";
+
+    if (task) {
+        titleInput.value = task.title;
+        descriptionInput.value = task.description;
+        const dueDate = task.dueDate;
+        dateInput.value = `${dueDate.getFullYear()}-${dueDate.getMonth()}-${dueDate.getDate()}`;
+        const priorityButton = priorityFieldset.querySelector(`input[value="${task.priority}"]`);
+        priorityButton.checked = true;
+        form.dataset.project = task.project;
+        form.dataset.taskID = task.ID;
+    }
 
     form.appendChild(formHeading);
     form.appendChild(titleLabel);

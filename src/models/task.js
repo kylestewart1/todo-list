@@ -28,4 +28,7 @@ export class Task {
         this.selected = false;
     }
 
+    setDueDateFromString(dateString) {
+        this.dueDate = new Date(dateString + " 00:00:00");
+    }
 }
