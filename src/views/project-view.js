@@ -3,6 +3,7 @@ import highPriority from "../assets/icons/high-priority.png";
 import mediumPriority from "../assets/icons/medium-priority.png";
 import lowPriority from "../assets/icons/low-priority.png";
 import deleteImg from "../assets/icons/delete.png";
+import deleteProjectIcon from "../assets/icons/fire.png";
 import ContentController from "../controllers/content-controller";
 import TodoList from "../models/todo-list";
 
@@ -65,11 +66,34 @@ export class ProjectView {
         content.innerHTML="";
         content.classList.add("project-view");
 
-        const projectHeader = document.createElement("div");
-        projectHeader.classList.add("project-header");
+        
+        
+
+        const projectViewHeader = document.createElement("div");
+        projectViewHeader.classList.add("project-view-header");
+        
         const projectTitle = document.createElement("h3");
         projectTitle.textContent = this.project.name;
-        content.appendChild(projectTitle);
+        projectViewHeader.appendChild(projectTitle);
+
+
+        if (this.project.name !== "Today" &&
+            this.project.name !== "Upcoming" &&
+            this.project.name !== "My Tasks") {
+            
+            const deleteProjectButton = document.createElement("button");
+            deleteProjectButton.classList.add("delete-project-btn");
+            deleteProjectButton.dataset.project = this.project.name;
+            const deleteProjectImg = document.createElement("img");
+            deleteProjectImg.src = deleteProjectIcon;
+            const deleteText = document.createElement("h4");
+            deleteText.innerText = "Delete Project";
+            deleteProjectButton.appendChild(deleteProjectImg);
+            deleteProjectButton.appendChild(deleteText);
+            projectViewHeader.appendChild(deleteProjectButton);
+        }
+
+        content.appendChild(projectViewHeader);
 
         
 
@@ -103,6 +127,7 @@ export class ProjectView {
         }
         ContentController.handleSelectTaskButtons();
         ContentController.handleDeleteTaskButtons();
+        ContentController.handleDeleteProjectButton();
     }
 }
 

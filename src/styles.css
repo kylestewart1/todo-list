@@ -303,3 +303,26 @@ legend {
     grid-row: 2 / -1;
     font-size: 1.5rem;
 }
+
+
+.project-view-header {
+    display: grid;
+    grid-template-columns: 10fr 1fr;
+    align-items: center;
+}
+
+.delete-project-btn {
+    width: 150px;
+    height: 50px;
+    background: none;
+    border: none;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    justify-items: center;
+}
+
+.delete-project-btn > img {
+    width: 30px;
+    height:  30px;
+}

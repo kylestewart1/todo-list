@@ -36,7 +36,6 @@ class ContentController {
             btn.addEventListener("click", () => {
                 const taskID = btn.dataset.task;
                 const projectName = btn.dataset.project;
-                console.log(`Project name: ${projectName}`);
                 TodoList.removeTask(taskID, projectName);
                 const projectView = new ProjectView(TodoList.projects[projectName]);
                 projectView.display();
@@ -55,6 +54,21 @@ class ContentController {
             dialog.appendChild(form);
             dialog.showModal();
             const control = new FormController(form.id);
+        })
+    }
+
+    handleDeleteProjectButton() {
+        const deleteButton = document.querySelector(".delete-project-btn");
+        if (!deleteButton) {
+            return;
+        }
+        deleteButton.addEventListener("click", () => {
+            console.log("yo");
+            const projectName = deleteButton.dataset.project;
+            TodoList.removeProject(projectName);
+            const projectView = new ProjectView(TodoList.projects["My Tasks"]);
+            projectView.display();
+            navView.display();
         })
     }
 }
