@@ -65,6 +65,8 @@ export class ProjectView {
         content.innerHTML="";
         content.classList.add("project-view");
 
+        const projectHeader = document.createElement("div");
+        projectHeader.classList.add("project-header");
         const projectTitle = document.createElement("h3");
         projectTitle.textContent = this.project.name;
         content.appendChild(projectTitle);

@@ -1,3 +1,6 @@
+import { Task } from "./task";
+
+
 export class Project {
     constructor(listName, tasks={}) {
         this.name = listName;
@@ -23,5 +26,22 @@ export class Project {
             }
         }
         return null;
+    }
+
+    static toJSON(project) {
+        return JSON.stringify(project);
+    }
+
+    static from(json) {
+        const object = JSON.parse(json);
+        const project = new Project(object.name,
+                                    object.tasks);
+        for (const taskID in project.tasks) {
+            const json = JSON.stringify(project.tasks[taskID]);
+            const task = Task.from(json);
+            project.remove(taskID);
+            project.add(task);
+        }
+        return project;
     }
 }

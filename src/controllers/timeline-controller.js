@@ -11,7 +11,6 @@ export function createTodayProject() {
             todayProject.add(task);
         }
     })
-    console.log(`Today: ${todayProject}`);
     return todayProject;
 }
 

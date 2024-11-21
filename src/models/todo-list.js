@@ -1,4 +1,5 @@
 import { Project } from "./project";
+import { storeTask, storeProject, deleteTaskFromStorage, deleteProjectFromStorage } from "../store-data";
 
 class TodoList {
     constructor() {
@@ -14,21 +15,26 @@ class TodoList {
             name = `${name}${num}`;
             num++;
         }
+        console.log(name);
         project.name = name;
         this.projects[name] = project;
+        storeProject(project);
     }
 
     removeProject(projectName) {
         delete this.projects[projectName];
+        deleteProjectFromStorage(projectName);
     }
 
     addTask(task, projectName) {
         task.project = projectName;
         this.projects[projectName].add(task);
+        storeTask(task);
     }
 
     removeTask(taskID, projectName) {
         this.projects[projectName].remove(taskID);
+        deleteTaskFromStorage(taskID);
     }
 
     getTask(taskID) {
