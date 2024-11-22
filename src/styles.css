@@ -1,328 +1,326 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 #content {
-    margin-left: 15%;
-    margin-top: 2%;
-    padding-left: 5%;
-    padding-right: 5%;
-    height: 100%;
-    width: 80%;
+  margin-left: 15%;
+  margin-top: 2%;
+  padding-left: 5%;
+  padding-right: 5%;
+  height: 100%;
+  width: 80%;
 }
 
 nav {
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 15%;
-    padding-left: 1%;
-    padding-right: 1%;
-    padding-top: 2%;
-    border-right: 1px solid grey;
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 15%;
+  padding-left: 1%;
+  padding-right: 1%;
+  padding-top: 2%;
+  border-right: 1px solid grey;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
 }
 
 .project-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.project-header, .task-listing {
-    width: 150px;
-    background: none;
-    border: none;
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-template-rows: 1fr;
-    align-items: center;
-    column-gap: 10px;
+.project-header,
+.task-listing {
+  width: 150px;
+  background: none;
+  border: none;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 1fr;
+  align-items: center;
+  column-gap: 10px;
 }
 
-.project-header > img, .task-listing > img {
-    justify-self: end;
+.project-header > img,
+.task-listing > img {
+  justify-self: end;
 }
 
-.project-header> h4, .task-listing > p {
-    justify-self: start;
-    text-align: start;
+.project-header > h4,
+.task-listing > p {
+  justify-self: start;
+  text-align: start;
 }
 
 .task-icon {
-    height: 1.2em;
+  height: 1.2em;
 }
 
-
-
 .project-icon {
-    height: 2em;
+  height: 2em;
 }
 
 button:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .project {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .task {
-    border-bottom: 1px solid gray;
-    min-height: 150px;
-    display: grid;
-    grid-template-columns: 1fr 4fr 3fr;
-    grid-template-rows: 1fr 1fr;
-    column-gap: 30px;
+  border-bottom: 1px solid gray;
+  min-height: 150px;
+  display: grid;
+  grid-template-columns: 1fr 4fr 3fr;
+  grid-template-rows: 1fr 1fr;
+  column-gap: 30px;
 }
 
-
 .delete-button {
-    grid-row: 1 / -1;
-    grid-column: 1 / 2;
-    background: none;
-    border: none;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-self: center;
-    align-items: center;
+  grid-row: 1 / -1;
+  grid-column: 1 / 2;
+  background: none;
+  border: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-self: center;
+  align-items: center;
 }
 
 .delete-button > img {
-    width: 30px;
-    justify-self: end;
+  width: 30px;
+  justify-self: end;
 }
 
 .delete-button > p {
-    justify-self: start;
-    font-size: 1.5rem;
+  justify-self: start;
+  font-size: 1.5rem;
 }
 .priority {
-    grid-row: 1 / -1;
-    grid-column: -2 / -1;
-    align-self: center;
-    justify-self: start;
-    width: 200px;
-    
-    background: none;
-    border: none;
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    align-items: center;
-    justify-items: start;
+  grid-row: 1 / -1;
+  grid-column: -2 / -1;
+  align-self: center;
+  justify-self: start;
+  width: 200px;
+
+  background: none;
+  border: none;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  align-items: center;
+  justify-items: start;
 }
 
 .priority > img {
-    width: 30px;
-    height: 30px;
+  width: 30px;
+  height: 30px;
 }
 
 .task-title {
-    background: none;
-    border: none;
-    grid-row: 1 / 2;
-    font-size: 2rem;
+  background: none;
+  border: none;
+  grid-row: 1 / 2;
+  font-size: 2rem;
 }
 
-
-.task-title, .due-date {
-    justify-self: start;
-    align-self: center;
-    grid-column: 2 / 3;
+.task-title,
+.due-date {
+  justify-self: start;
+  align-self: center;
+  grid-column: 2 / 3;
 }
 
 .due-date {
-    font-size: 0.8em;
-    color: green;
+  font-size: 0.8em;
+  color: green;
 }
 
 .title {
-    grid-column: 1 / -1;
+  grid-column: 1 / -1;
 }
 
 .project-view {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 #add-task-btn {
-    width: 150px;
-    height: 50px;
-    background: none;
-    border: none;
-    margin-left: 20px;
-    display: grid;
-    grid-template-columns: 1fr 6fr;
-    column-gap: 20px;
-    align-items: center;
+  width: 150px;
+  height: 50px;
+  background: none;
+  border: none;
+  margin-left: 20px;
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+  column-gap: 20px;
+  align-items: center;
 }
 
 #add-task-btn > img {
-    width: 30px;
-    height: 30px;
+  width: 30px;
+  height: 30px;
 }
 
 #add-task-btn > h4 {
-    font-size: 1.5em;
+  font-size: 1.5em;
 }
 
 .nav-add-task-btn {
-    height: 20px;
-    width: 80px;
-    margin-left: 20px;
+  height: 20px;
+  width: 80px;
+  margin-left: 20px;
 }
 
 #new-project-modal[open] {
-    height: 80%;
-    width: 80%;
-    position: absolute;
-    left: 35%;
-    top: 20%;
-    width: 30%;
-    min-width: 200px;
-    max-width: 500px;
-    height: 50%;
-    min-height: 300px;
-    max-height: 600px;
-    background-color: white;
+  height: 80%;
+  width: 80%;
+  position: absolute;
+  left: 35%;
+  top: 20%;
+  width: 30%;
+  min-width: 200px;
+  max-width: 500px;
+  height: 50%;
+  min-height: 300px;
+  max-height: 600px;
+  background-color: white;
 }
 
 #create-task-modal[open] {
-    position: absolute;
-    left: 35%;
-    top: 10%;
-    width: 40%;
-    height: 80%;
-    display: grid;
-    align-items: center;
-    justify-items: center;
+  position: absolute;
+  left: 35%;
+  top: 10%;
+  width: 40%;
+  height: 80%;
+  display: grid;
+  align-items: center;
+  justify-items: center;
 }
 
 form {
-    border: 1px solid lightgray;
-    padding: 10%;
-    display: grid;
+  border: 1px solid lightgray;
+  padding: 10%;
+  display: grid;
 }
 
 #create-task-form {
-    width: 90%;
-    height: 90%;
-    grid-template-columns: 1fr;
-    grid-template-rows: 2fr 1fr 2fr 1fr 5fr 1fr 2fr 5fr 1fr;
-    row-gap: 20px;
+  width: 90%;
+  height: 90%;
+  grid-template-columns: 1fr;
+  grid-template-rows: 2fr 1fr 2fr 1fr 5fr 1fr 2fr 5fr 1fr;
+  row-gap: 20px;
 }
 
 #new-project-form {
-    
-    grid-template-columns: 1fr 4fr;
-    grid-template-rows: 1fr 1fr 3fr 1fr;
-    row-gap: 20px;
-    column-gap: 20px;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 1fr 1fr 3fr 1fr;
+  row-gap: 20px;
+  column-gap: 20px;
 }
 
 #select-tasks-label {
-    grid-column: 1 / -1;
+  grid-column: 1 / -1;
 }
 
 .selected {
-    background-color: yellow;
+  background-color: yellow;
 }
 
 form > button {
-    background-color: forestgreen;
-    color: white;
-    font-weight: bold;
-    border-radius: 10px;
-    grid-column: 1 / -1;
+  background-color: forestgreen;
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+  grid-column: 1 / -1;
 }
 
 form > select {
-    grid-column: 1 / -1;
+  grid-column: 1 / -1;
 }
 
 .invalid {
-    box-shadow: 5px 5px 5px red;
+  box-shadow: 5px 5px 5px red;
 }
 
 fieldset {
-    display: grid;
-    grid-template-columns: 1fr 5fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    row-gap: 20px;
-    padding: 5%;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  row-gap: 20px;
+  padding: 5%;
 }
 
 legend {
-    grid-column: 1 / -1;
+  grid-column: 1 / -1;
 }
 
 .task-container {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-template-rows: 1fr 1fr 5fr;
-    row-gap: 10px;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 1fr 1fr 5fr;
+  row-gap: 10px;
 }
 
 .edit-task-button {
-    background: none;
-    border: none;
-    align-self: center;
-    width: 80px;
-    grid-row: 1;
-    grid-column: 1;
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    align-items: center;
+  background: none;
+  border: none;
+  align-self: center;
+  width: 80px;
+  grid-row: 1;
+  grid-column: 1;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  align-items: center;
 }
 
 .edit-task-button > img {
-    width: 30px;
+  width: 30px;
 }
 
 .task-view-title {
-    font-size: 2.5rem;
-    align-self: start;
+  font-size: 2.5rem;
+  align-self: start;
 }
 
 .task-view-due-date {
-    grid-column: 1;
-    grid-row: 2;
-    align-self: center;
+  grid-column: 1;
+  grid-row: 2;
+  align-self: center;
 }
 
 .task-description {
-    grid-column: -2 / -1;
-    grid-row: 2 / -1;
-    font-size: 1.5rem;
+  grid-column: -2 / -1;
+  grid-row: 2 / -1;
+  font-size: 1.5rem;
 }
 
-
 .project-view-header {
-    display: grid;
-    grid-template-columns: 10fr 1fr;
-    align-items: center;
+  display: grid;
+  grid-template-columns: 10fr 1fr;
+  align-items: center;
 }
 
 .delete-project-btn {
-    width: 150px;
-    height: 50px;
-    background: none;
-    border: none;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    align-items: center;
-    justify-items: center;
+  width: 150px;
+  height: 50px;
+  background: none;
+  border: none;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  justify-items: center;
 }
 
 .delete-project-btn > img {
-    width: 30px;
-    height:  30px;
+  width: 30px;
+  height: 30px;
 }

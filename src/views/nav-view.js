@@ -6,120 +6,121 @@ import TodoList from "../models/todo-list";
 import NavController from "../controllers/nav-controller";
 
 class NavView {
-    constructor(todoList) {
-        this.todoList = todoList;
+  constructor(todoList) {
+    this.todoList = todoList;
+  }
+
+  static buildTaskNav(task) {
+    const container = document.createElement("button");
+    container.classList.add("task-listing");
+    container.classList.add("task-btn");
+    container.dataset.task = task.ID;
+
+    const icon = document.createElement("img");
+    icon.src = taskIcon;
+    icon.classList.add("task-icon");
+    container.appendChild(icon);
+
+    const title = document.createElement("p");
+    title.textContent = task.title;
+    container.appendChild(title);
+
+    return container;
+  }
+
+  static buildProjectNav(project) {
+    const container = document.createElement("div");
+    container.id = `nav-${project.name}`;
+    container.classList.add("project-nav");
+
+    const projectHeader = document.createElement("button");
+    projectHeader.classList.add("project-header");
+    projectHeader.classList.add("project-btn");
+    projectHeader.dataset.project = project.name;
+    const icon = document.createElement("img");
+    icon.src = projectIcon;
+    icon.classList.add("project-icon");
+    projectHeader.appendChild(icon);
+    const title = document.createElement("h4");
+    title.textContent = project.name;
+    projectHeader.appendChild(title);
+    container.appendChild(projectHeader);
+
+    for (const taskID in project.tasks) {
+      const taskNav = NavView.buildTaskNav(project.tasks[taskID]);
+      container.appendChild(taskNav);
     }
 
-    static buildTaskNav(task) {
-        const container = document.createElement("button");
-        container.classList.add("task-listing");
-        container.classList.add("task-btn");
-        container.dataset.task = task.ID;
+    const addTaskButton = document.createElement("button");
+    addTaskButton.classList.add("task-listing");
+    addTaskButton.classList.add("add-task");
+    addTaskButton.id = `add-task-to-${project.name}`;
+    addTaskButton.dataset.project = project.name;
+    const addTaskImg = document.createElement("img");
+    addTaskImg.classList.add("task-icon");
+    addTaskImg.src = addTaskIcon;
+    addTaskButton.appendChild(addTaskImg);
+    const addTaskText = document.createElement("p");
+    addTaskText.innerText = "Add Task";
+    addTaskButton.appendChild(addTaskText);
 
-        const icon = document.createElement("img");
-        icon.src = taskIcon;
-        icon.classList.add("task-icon");
-        container.appendChild(icon);
+    container.appendChild(addTaskButton);
 
-        const title = document.createElement("p");
-        title.textContent = task.title;
-        container.appendChild(title);
+    return container;
+  }
 
-        return container;
-    }
+  timeline() {
+    const timelineDiv = document.createElement("div");
+    timelineDiv.id = "timeline";
+    timelineDiv.classList.add("project-nav");
 
-    static buildProjectNav(project) {
-        const container = document.createElement("div");
-        container.id = `nav-${project.name}`;
-        container.classList.add("project-nav");
+    const newProjectButton = document.createElement("button");
+    newProjectButton.id = "new-project";
+    newProjectButton.classList.add("project-header");
+    const newImg = document.createElement("img");
+    newImg.class = "project-icon";
+    newImg.src = "../assets/icons/add.png";
+    newProjectButton.innerHTML += `<h4>New Project</h4>`;
 
-        const projectHeader = document.createElement("button");
-        projectHeader.classList.add("project-header");
-        projectHeader.classList.add("project-btn");
-        projectHeader.dataset.project = project.name;
-        const icon = document.createElement("img");
-        icon.src = projectIcon;
-        icon.classList.add("project-icon");
-        projectHeader.appendChild(icon);
-        const title = document.createElement("h4");
-        title.textContent = project.name;
-        projectHeader.appendChild(title);
-        container.appendChild(projectHeader);
+    const todayButton = document.createElement("button");
+    todayButton.id = "today";
+    todayButton.classList.add("project-header");
+    todayButton.innerHTML += `<h4>Today</h4>`;
 
-        for (const taskID in project.tasks) {
-            const taskNav = NavView.buildTaskNav(project.tasks[taskID]);
-            container.appendChild(taskNav);
-        }
+    const upcomingButton = document.createElement("button");
+    upcomingButton.id = "upcoming";
+    upcomingButton.classList.add("project-header");
+    upcomingButton.innerHTML += `<h4>Upcoming</h4>`;
 
-        const addTaskButton = document.createElement("button");
-        addTaskButton.classList.add("task-listing");
-        addTaskButton.classList.add("add-task");
-        addTaskButton.id = `add-task-to-${project.name}`;
-        addTaskButton.dataset.project = project.name;
-        const addTaskImg = document.createElement("img");
-        addTaskImg.classList.add("task-icon");
-        addTaskImg.src = addTaskIcon;
-        addTaskButton.appendChild(addTaskImg);
-        const addTaskText = document.createElement("p");
-        addTaskText.innerText = "Add Task";
-        addTaskButton.appendChild(addTaskText);
+    timelineDiv.appendChild(newProjectButton);
+    timelineDiv.appendChild(todayButton);
+    timelineDiv.appendChild(upcomingButton);
 
-        container.appendChild(addTaskButton);
+    return timelineDiv;
+  }
 
-        return container;
-    }
+  display() {
+    const navBar = document.querySelector("nav");
 
-    timeline() {
-        const timelineDiv = document.createElement("div");
-        timelineDiv.id = "timeline";
-        timelineDiv.classList.add("project-nav");
-
-        const newProjectButton = document.createElement("button");
-        newProjectButton.id = "new-project";
-        newProjectButton.classList.add("project-header");
-        const newImg = document.createElement("img");
-        newImg.class="project-icon";
-        newImg.src = "../assets/icons/add.png"
-        newProjectButton.innerHTML += `<h4>New Project</h4>`;
-
-        const todayButton = document.createElement("button");
-        todayButton.id = "today";
-        todayButton.classList.add("project-header");
-        todayButton.innerHTML += `<h4>Today</h4>`;
-
-        const upcomingButton = document.createElement("button");
-        upcomingButton.id = "upcoming";
-        upcomingButton.classList.add("project-header");
-        upcomingButton.innerHTML += `<h4>Upcoming</h4>`;
-
-        timelineDiv.appendChild(newProjectButton);
-        timelineDiv.appendChild(todayButton);
-        timelineDiv.appendChild(upcomingButton);
-
-        return timelineDiv;
-    }
-
-    display() {
-        const navBar = document.querySelector("nav");
-        
-        navBar.innerHTML = `
+    navBar.innerHTML = `
             <div id="timeline" class="project-nav">
                 <button id="new-project" class="project-header"><img class="project-icon" src=${addIcon}><h4>New Project</h4></button>
                 <button id="today" class="project-header"><img class="project-icon" src=${projectIcon}><h4>Today</h4></button>
                 <button id="upcoming" class="project-header"><img class="project-icon" src=${projectIcon}><h4>Upcoming</h4></button>
             </div>`;
 
-
-        for (const project in this.todoList.projects) {
-            navBar.appendChild(NavView.buildProjectNav(this.todoList.projects[project]));
-        }
-        NavController.handleNewProjectButton();
-        NavController.handleAddTaskButtons();
-        NavController.handleProjectDisplay();
-        NavController.handleTaskDisplay();
-        NavController.handleTodayButton();
-        NavController.handleUpcomingButton();
+    for (const project in this.todoList.projects) {
+      navBar.appendChild(
+        NavView.buildProjectNav(this.todoList.projects[project]),
+      );
     }
+    NavController.handleNewProjectButton();
+    NavController.handleAddTaskButtons();
+    NavController.handleProjectDisplay();
+    NavController.handleTaskDisplay();
+    NavController.handleTodayButton();
+    NavController.handleUpcomingButton();
+  }
 }
 
 export default new NavView(TodoList);
